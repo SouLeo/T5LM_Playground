@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_283",
+    "graph_description": "pick up the candle to the right of the sink",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "pick up the candle to the right of the sink",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "to the right of the sink"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "candle"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "pick up"
+                }
+            }
+        }
+    ]
+}

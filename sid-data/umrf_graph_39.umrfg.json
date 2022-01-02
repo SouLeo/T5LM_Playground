@@ -1,0 +1,114 @@
+{
+    "graph_name": "umrf_graph_39",
+    "graph_description": "Turn to the left, walk to the wall, turn to the left again and walk up to the nightstand. ",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn to the left",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "turn to the left again",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 1
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "walk to the wall",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the wall"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "walk up to the nightstand. ",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the nightstand"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk up to"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

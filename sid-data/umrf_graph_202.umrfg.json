@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_202",
+    "graph_description": "Place the empty box on top of the sofa to the left of the laptop",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place the empty box on top of the sofa to the left of the laptop",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on top of the sofa to the left of the laptop"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "empty box"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

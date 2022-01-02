@@ -1,0 +1,58 @@
+{
+    "graph_name": "umrf_graph_19",
+    "graph_description": "With the alarm clock, turn around and walk straight to the desk against the wall.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "turn around",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "around"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaTransport",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "walk straight to the desk against the wall.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the desk against the wall"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "alarm clock"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk straight"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

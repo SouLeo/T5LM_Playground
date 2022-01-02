@@ -1,0 +1,58 @@
+{
+    "graph_name": "umrf_graph_18",
+    "graph_description": "Take an alarm clock to move it to the desk.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Take an alarm clock",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "alarm clock"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Take"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaTransport",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "move it to the desk",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the desk"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "it"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "move"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaPickup",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

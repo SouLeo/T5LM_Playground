@@ -1,0 +1,114 @@
+{
+    "graph_name": "umrf_graph_300",
+    "graph_description": "Turn to your left and walk across the room, then turn to your left at the wall and go to the toilet ahead of you, to the right. ",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn to your left",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "walk across the room",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "the room"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk across"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 2
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "turn to your left",
+            "id": 2,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "go to the toilet ahead of you, to the right",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the toilet ahead of you, to the right"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "go to"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 2,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

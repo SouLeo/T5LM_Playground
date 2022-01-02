@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_169",
+    "graph_description": "put a bowl in the refrigerator",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "put a bowl in the refrigerator",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "in the refrigerator"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "bowl"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "put"
+                }
+            }
+        }
+    ]
+}

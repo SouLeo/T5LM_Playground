@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_257",
+    "graph_description": "Place the candle near the red objects at the edge of the bath tub.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place the candle near the red objects at the edge of the bath tub.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "near the red objects at the edge of the bath tub"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "candle"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_24",
+    "graph_description": "Carry the clock over to the dresser against the wall",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "Carry the clock over to the dresser against the wall",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the dresser against the wall"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "clock"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Carry"
+                }
+            }
+        }
+    ]
+}

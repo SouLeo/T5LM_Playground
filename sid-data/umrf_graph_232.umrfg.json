@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_232",
+    "graph_description": "Take a couple steps to the left",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Take a couple steps to the left",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "couple steps"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "take a"
+                }
+            }
+        }
+    ]
+}

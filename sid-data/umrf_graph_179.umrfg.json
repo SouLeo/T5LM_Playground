@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_179",
+    "graph_description": "Place a box on a chair",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place a box on a chair",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on a chair"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "box"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

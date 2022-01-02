@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_228",
+    "graph_description": "Turn to the left. ",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn to the left. ",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn to"
+                }
+            }
+        }
+    ]
+}

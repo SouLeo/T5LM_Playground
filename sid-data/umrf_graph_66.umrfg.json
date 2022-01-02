@@ -1,0 +1,54 @@
+{
+    "graph_name": "umrf_graph_66",
+    "graph_description": "Turn around and head towards the bed on your left.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn around",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "around"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "head towards the bed on your left",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the bed on your left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "head towards"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

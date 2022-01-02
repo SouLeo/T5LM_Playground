@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_239",
+    "graph_description": "Put the candle in the left cabinet under the right sink.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Put the candle in the left cabinet under the right sink.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "in the left cabinet under the right sink"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "candle"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Put"
+                }
+            }
+        }
+    ]
+}

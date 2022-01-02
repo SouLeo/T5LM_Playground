@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_193",
+    "graph_description": "Pick the box up from under the table.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Pick the box up from under the table.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "under the table"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "box"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Pick"
+                }
+            }
+        }
+    ]
+}

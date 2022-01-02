@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_314",
+    "graph_description": "Put a candle on the back of the toilet.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Put a candle on the back of the toilet.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the back of the toilet"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "candle"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Put"
+                }
+            }
+        }
+    ]
+}

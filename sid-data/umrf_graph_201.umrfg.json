@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_201",
+    "graph_description": "Move to the clear glass table facing the cardboard box in top of the table",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Move to the clear glass table facing the cardboard box in top of the table",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the clear glass table facing the cardboard box in top of the table"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Move to"
+                }
+            }
+        }
+    ]
+}

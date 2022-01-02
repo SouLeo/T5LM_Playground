@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_37",
+    "graph_description": "Pick up the clock that is sitting on the desk",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Pick up the clock that is sitting on the desk",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the desk"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "clock"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Pick up"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,114 @@
+{
+    "graph_name": "umrf_graph_186",
+    "graph_description": "Turn around and cross the room and go right and then turn to the left to face the box next to the blue chair.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn around",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "around"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "go right",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "right"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "go"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaOrient",
+                    "id": 0
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "cross the room",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "the room"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "cross"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "turn to the left to face the box next to the blue chair",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the box next to the blue chair"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn to the left to face"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

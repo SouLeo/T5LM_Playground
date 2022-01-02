@@ -1,0 +1,54 @@
+{
+    "graph_name": "umrf_graph_25",
+    "graph_description": "Turn left and walk straight ahead to the alarm clock.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn left",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "walk straight ahead to the alarm clock.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the alarm clock"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk straight ahead"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

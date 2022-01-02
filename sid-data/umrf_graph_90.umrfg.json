@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_90",
+    "graph_description": "Put a book on a chair.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Put a book on a chair.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on a chair"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Put"
+                }
+            }
+        }
+    ]
+}

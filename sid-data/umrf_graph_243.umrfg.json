@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_243",
+    "graph_description": "Move to the left side of the sink where the counter top is",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Move to the left side of the sink where the counter top is",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the left side of the sink where the counter top is"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Move to"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_76",
+    "graph_description": "Walk around to face the side of the white table.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "Walk around to face the side of the white table.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the side of the white table"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Walk around to face"
+                }
+            }
+        }
+    ]
+}

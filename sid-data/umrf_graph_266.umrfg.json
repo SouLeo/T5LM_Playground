@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_266",
+    "graph_description": "Go to the left of the sink",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Go to the left of the sink",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the left of the sink"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Go to"
+                }
+            }
+        }
+    ]
+}

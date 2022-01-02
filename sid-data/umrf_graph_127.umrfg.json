@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_127",
+    "graph_description": "Move to your right some so you are facing the center of the bed.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "Move to your right some so you are facing the center of the bed.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the center of the bed"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Move to your right some so you are facing"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_302",
+    "graph_description": "Place the candle on the left side of the back of the toilet.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place the candle on the left side of the back of the toilet.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the left side of the back of the toilet"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "candle"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

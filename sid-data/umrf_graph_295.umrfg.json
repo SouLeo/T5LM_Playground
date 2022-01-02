@@ -1,0 +1,88 @@
+{
+    "graph_name": "umrf_graph_295",
+    "graph_description": "Take a step backwards, then a step to your left, continue facing the sink and also the toilet",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Take a step backwards",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "backwards"
+                },
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "a step"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Take"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "then a step to your left",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "a step"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaOrient",
+                    "id": 0
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "continue facing the sink and also the toilet",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the sink and also the toilet"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "continue facing"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

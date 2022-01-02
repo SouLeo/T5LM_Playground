@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_167",
+    "graph_description": "Walk to end of the counter next to the fridge.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Walk to end of the counter next to the fridge.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "end of the counter next to the fridge"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Walk to"
+                }
+            }
+        }
+    ]
+}

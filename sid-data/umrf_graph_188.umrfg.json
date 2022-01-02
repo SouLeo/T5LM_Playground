@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_188",
+    "graph_description": "pick up the box from the floor",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "pick up the box from the floor",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the floor"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "box"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "pick up"
+                }
+            }
+        }
+    ]
+}

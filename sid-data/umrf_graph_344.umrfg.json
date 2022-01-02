@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_344",
+    "graph_description": "Move the CD from the desk to the top of the dresser.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "Move the CD from the desk to the top of the dresser.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the top of the dresser"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "CD from the desk"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Move"
+                }
+            }
+        }
+    ]
+}

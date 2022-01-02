@@ -1,0 +1,94 @@
+{
+    "graph_name": "umrf_graph_147",
+    "graph_description": "Turn around, move forward a few feet, turn right to face the book on the dining table.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn around",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "around"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "move forward a few feet",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "forward"
+                },
+                "distance": {
+                    "amount": {
+                        "pvf_type": "number",
+                        "pvf_example": "few"
+                    },
+                    "unit": {
+                        "pvf_type": "string",
+                        "pvf_example": "feet"
+                    }
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "move"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaOrient",
+                    "id": 0
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "turn right to face the book on the dining table",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the book on the dining table"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn right to face"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

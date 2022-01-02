@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_70",
+    "graph_description": "Bring the ball to the bed",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "Bring the ball to the bed",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the bed"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "ball"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Bring"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "graph_name": "umrf_graph_250",
+    "graph_description": "Turn around and cross the room to face the silver shelves in the corner.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn around",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "around"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaOrient",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "cross the room to face the silver shelves in the corner",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the silver shelves in the corner"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "cross the room to face"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

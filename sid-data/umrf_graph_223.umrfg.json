@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_223",
+    "graph_description": "Put the slice of bread to the left of the knife on the stand.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Put the slice of bread to the left of the knife on the stand.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "to the left of the knife on the stand"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "slice of bread"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Put"
+                }
+            }
+        }
+    ]
+}

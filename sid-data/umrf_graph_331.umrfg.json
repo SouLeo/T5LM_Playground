@@ -1,0 +1,54 @@
+{
+    "graph_name": "umrf_graph_331",
+    "graph_description": "Go forward and the turn right and then left to face the television.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Go forward",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "Go forward"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Go"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaOrient",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "turn right and then left to face the television",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the television"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn right and then left to face"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

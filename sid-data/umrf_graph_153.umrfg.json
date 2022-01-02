@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_153",
+    "graph_description": "Place the book on the sofa cushion",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place the book on the sofa cushion",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the sofa cushion"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

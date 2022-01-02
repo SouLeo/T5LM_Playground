@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_145",
+    "graph_description": "Place a book on a night stand",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place a book on a night stand",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on a night stand"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

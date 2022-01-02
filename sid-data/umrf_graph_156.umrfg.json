@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_156",
+    "graph_description": "Turn around to face the couch.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "Turn around to face the couch.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the couch"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn around to face"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_183",
+    "graph_description": "Pick up the box on the coffee table,",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Pick up the box on the coffee table,",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the coffee table"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "box"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Pick up"
+                }
+            }
+        }
+    ]
+}

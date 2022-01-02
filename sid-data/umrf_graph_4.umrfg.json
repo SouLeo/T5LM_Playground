@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_4",
+    "graph_description": "Carry the alarm clock to the other desk to the left ",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "Carry the alarm clock to the other desk to the left ",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the other desk to the left"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "alarm clock"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Carry"
+                }
+            }
+        }
+    ]
+}

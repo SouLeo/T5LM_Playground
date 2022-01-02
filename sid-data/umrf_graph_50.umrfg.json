@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_50",
+    "graph_description": "move a bat from the floor to the bed",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "move a bat from the floor to the bed",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the bed"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "bat from the floor"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "move"
+                }
+            }
+        }
+    ]
+}

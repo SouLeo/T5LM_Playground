@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_149",
+    "graph_description": "Pick up the book on the table, in front of the chair. ",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Pick up the book on the table, in front of the chair. ",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the table, in front of the chair"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Pick up"
+                }
+            }
+        }
+    ]
+}

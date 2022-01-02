@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_236",
+    "graph_description": "Place a knife on a table.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place a knife on a table.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on a table"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "knife"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

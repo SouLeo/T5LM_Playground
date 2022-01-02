@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_26",
+    "graph_description": "Place the alarm clock on middle of the dresser, all the way forward to the ledge.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place the alarm clock on middle of the dresser, all the way forward to the ledge.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "all the way forward to the ledge"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "alarm clock on middle of the dresser"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

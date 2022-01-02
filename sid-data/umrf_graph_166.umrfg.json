@@ -1,0 +1,58 @@
+{
+    "graph_name": "umrf_graph_166",
+    "graph_description": "move to the left a bit and face the fridge",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "move to the left a bit",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "a bit"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "move"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaOrient",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "face the fridge",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the fridge"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "face"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

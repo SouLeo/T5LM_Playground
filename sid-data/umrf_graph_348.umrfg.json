@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_348",
+    "graph_description": "Place a CD in a safe",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place a CD in a safe",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "in a safe"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "CD"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_113",
+    "graph_description": "Put the book on the coffee table to the right of the closest golden statue.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Put the book on the coffee table to the right of the closest golden statue.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the coffee table to the right of the closest golden statue"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Put"
+                }
+            }
+        }
+    ]
+}

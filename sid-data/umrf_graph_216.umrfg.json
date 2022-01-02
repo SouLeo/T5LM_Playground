@@ -1,0 +1,87 @@
+{
+    "graph_name": "umrf_graph_216",
+    "graph_description": "Go to the right towards the stove and make a right and go to the counter.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "make a right",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "right"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "make a"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 1
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Go to the right towards the stove",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "extent": {
+                    "pvf_type": "string"
+                },
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the stove"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Go to the right towards"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "go to the counter",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the counter"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "go to"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

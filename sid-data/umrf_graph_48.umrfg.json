@@ -1,0 +1,84 @@
+{
+    "graph_name": "umrf_graph_48",
+    "graph_description": "walk forward, turn left, walk towards the stove",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "turn left",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 1
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "walk forward",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "forward"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "walk towards the stove",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the stove"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk towards"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

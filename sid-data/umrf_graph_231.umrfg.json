@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_231",
+    "graph_description": "To put the knife in a drawer. ",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "put the knife in a drawer. ",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "in a drawer"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "knife"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "put"
+                }
+            }
+        }
+    ]
+}

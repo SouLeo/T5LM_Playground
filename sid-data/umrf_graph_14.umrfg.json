@@ -1,0 +1,58 @@
+{
+    "graph_name": "umrf_graph_14",
+    "graph_description": "Walk a step the the left and face the front of the desk.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Walk a step the the left",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "a step"
+                },
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "left"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Walk"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaOrient",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "face the front of the desk",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the front of the desk"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "face"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

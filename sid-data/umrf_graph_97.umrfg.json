@@ -1,0 +1,54 @@
+{
+    "graph_name": "umrf_graph_97",
+    "graph_description": "Turn left walking towards the wall. Turn left walking towards the desk.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Turn left walking towards the wall",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the wall"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn left walking towards"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Turn left walking towards the desk",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the desk"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn left walking towards"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

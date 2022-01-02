@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_229",
+    "graph_description": "Walk across the room to the counter to the left of the stove. ",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Walk across the room to the counter to the left of the stove. ",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the counter to the left of the stove"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Walk across the room to"
+                }
+            }
+        }
+    ]
+}

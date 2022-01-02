@@ -1,0 +1,62 @@
+{
+    "graph_name": "umrf_graph_204",
+    "graph_description": "Take the box from the kitchen table, put it on the red couch",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Take the box from the kitchen table",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the kitchen table"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "box"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Take"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaPlace",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "put it on the red couch",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the red couch"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "it"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "put"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaPickup",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

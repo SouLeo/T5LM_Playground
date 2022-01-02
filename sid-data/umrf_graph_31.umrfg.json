@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_31",
+    "graph_description": "Put the clock on the top shelf to the right.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Put the clock on the top shelf to the right.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the top shelf to the right."
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "clock"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Put"
+                }
+            }
+        }
+    ]
+}

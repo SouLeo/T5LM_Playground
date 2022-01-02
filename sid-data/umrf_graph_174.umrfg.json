@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_174",
+    "graph_description": "Transfer the box from a red dresser on to the green chair.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "Transfer the box from a red dresser on to the green chair.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the green chair"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "box from a red dresser"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Transfer"
+                }
+            }
+        }
+    ]
+}

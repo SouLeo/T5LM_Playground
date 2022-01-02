@@ -1,0 +1,92 @@
+{
+    "graph_name": "umrf_graph_65",
+    "graph_description": "Pick up the basketball, carry it to the other side of the room, set it on the the bed near the rightmost pillow.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Pick up the basketball",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "basketball"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Pick up"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaTransport",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "set it on the the bed near the rightmost pillow.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the bed near the rightmost pillow"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "it"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "set"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaTransport",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "carry it to the other side of the room",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the other side of the room"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "it"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "carry"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaPlace",
+                    "id": 0
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaPickup",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_168",
+    "graph_description": "grab a bowl from the cupboard above the stove",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "grab a bowl from the cupboard above the stove",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the cupboard above the stove"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "bowl"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "grab"
+                }
+            }
+        }
+    ]
+}

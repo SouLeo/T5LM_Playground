@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_326",
+    "graph_description": "Turn around to the table behind you.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "Turn around to the table behind you.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "the table behind you"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn around to"
+                }
+            }
+        }
+    ]
+}

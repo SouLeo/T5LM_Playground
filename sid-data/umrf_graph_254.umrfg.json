@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_254",
+    "graph_description": "Move a candle to a bathroom rack.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "Move a candle to a bathroom rack.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "a bathroom rack"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "candle"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Move"
+                }
+            }
+        }
+    ]
+}

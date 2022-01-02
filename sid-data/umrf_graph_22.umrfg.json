@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_22",
+    "graph_description": "Pick up the alarm clock from the night stand.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Pick up the alarm clock from the night stand.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the night stand"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "alarm clock"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Pick up"
+                }
+            }
+        }
+    ]
+}

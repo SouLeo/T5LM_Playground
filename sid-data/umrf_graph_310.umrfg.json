@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_310",
+    "graph_description": "walk to face toilet tank",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaOrient",
+            "package_name": "ta_orient",
+            "description": "walk to face toilet tank",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "landmark": {
+                    "pvf_type": "string",
+                    "pvf_example": "toilet tank"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk to face"
+                }
+            }
+        }
+    ]
+}

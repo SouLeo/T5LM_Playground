@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_139",
+    "graph_description": "Pick up the book in front of the laptop from the bed",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPickup",
+            "package_name": "ta_pickup",
+            "description": "Pick up the book in front of the laptop from the bed",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the bed"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book in front of the laptop"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Pick up"
+                }
+            }
+        }
+    ]
+}

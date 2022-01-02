@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_125",
+    "graph_description": "Move a book to a wooden desk.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "Move a book to a wooden desk.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "wooden desk"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Move"
+                }
+            }
+        }
+    ]
+}

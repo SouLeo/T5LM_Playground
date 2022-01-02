@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_83",
+    "graph_description": "Put the book on top of the armchair to the left of the couch.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Put the book on top of the armchair to the left of the couch.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the left of the couch"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book on top of the armchair"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Put"
+                }
+            }
+        }
+    ]
+}

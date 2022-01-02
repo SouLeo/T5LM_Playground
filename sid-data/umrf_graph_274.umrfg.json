@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_274",
+    "graph_description": "place a candle on top of the tall white cabinet",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "place a candle on top of the tall white cabinet",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on top of the tall white cabinet"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "candle"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "place"
+                }
+            }
+        }
+    ]
+}

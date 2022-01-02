@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_88",
+    "graph_description": "Place the book on the front right corner of the chair to the right of the credit card.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Place the book on the front right corner of the chair to the right of the credit card.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the right of the credit card"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book on the front right corner of the chair"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Place"
+                }
+            }
+        }
+    ]
+}

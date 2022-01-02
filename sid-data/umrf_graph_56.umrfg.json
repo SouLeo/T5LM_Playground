@@ -1,0 +1,182 @@
+{
+    "graph_name": "umrf_graph_56",
+    "graph_description": "Turn right and take a small step forward then turn right and walk until you're even with the middle of the side of the bed then when you are turn right and walk to the bed.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "Turn right",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "right"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "turn right",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "right"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 1
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaNavigation",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaManouevre",
+            "package_name": "ta_manouevre",
+            "description": "turn right",
+            "id": 2,
+            "effect": "synchronous",
+            "input_parameters": {
+                "direction": {
+                    "pvf_type": "string",
+                    "pvf_example": "right"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "turn"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaNavigation",
+                    "id": 2
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaNavigation",
+                    "id": 1,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "take a small step forward",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "small step"
+                },
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "forward"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Take"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 0,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "walk until you're even with the middle of the side of the bed",
+            "id": 1,
+            "effect": "synchronous",
+            "input_parameters": {
+                "extent": {
+                    "pvf_type": "string",
+                    "pvf_example": "until you're even with"
+                },
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the middle of the side of the bed"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk"
+                }
+            },
+            "children": [
+                {
+                    "name": "TaManouevre",
+                    "id": 2
+                }
+            ],
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 1,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "walk to the bed",
+            "id": 2,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "the bed"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "walk"
+                }
+            },
+            "parents": [
+                {
+                    "name": "TaManouevre",
+                    "id": 2,
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

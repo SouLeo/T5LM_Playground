@@ -1,0 +1,24 @@
+{
+    "graph_name": "umrf_graph_271",
+    "graph_description": "Move to the left to stand on the right side of the toilet.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaNavigation",
+            "package_name": "ta_navigation",
+            "description": "Move to the left to stand on the right side of the toilet.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "he left to stand on the right side of the toilet"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Move to"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_337",
+    "graph_description": "put the CD on the right side of the front part of the dresser",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "put the CD on the right side of the front part of the dresser",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "on the right side of the front part of the dresser"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "CD"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "put"
+                }
+            }
+        }
+    ]
+}

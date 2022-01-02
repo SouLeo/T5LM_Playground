@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_36",
+    "graph_description": "Put the lunchbox on the upper shelf of the desk, to the right of the car keys.",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaPlace",
+            "package_name": "ta_place",
+            "description": "Put the lunchbox on the upper shelf of the desk, to the right of the car keys.",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "locale": {
+                    "pvf_type": "string",
+                    "pvf_example": "the right of the car keys"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "lunchbox on the upper shelf of the desk"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "Put"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "graph_name": "umrf_graph_85",
+    "graph_description": "move book from coffee table to chair",
+    "graph_state": 1,
+    "umrf_actions": [
+        {
+            "name": "TaTransport",
+            "package_name": "ta_transport",
+            "description": "move book from coffee table to chair",
+            "id": 0,
+            "effect": "synchronous",
+            "input_parameters": {
+                "location": {
+                    "pvf_type": "string",
+                    "pvf_example": "chair"
+                },
+                "object": {
+                    "pvf_type": "string",
+                    "pvf_example": "book from coffee table"
+                },
+                "verb": {
+                    "pvf_type": "string",
+                    "pvf_example": "move"
+                }
+            }
+        }
+    ]
+}
