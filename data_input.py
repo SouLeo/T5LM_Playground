@@ -46,6 +46,12 @@ class DataInput:
         valid_nl_prompts = self.get_nl_prompt(valid_jsons)
         return valid_nl_prompts, valid_jsons
 
+    def get_json_as_string(self, json_list: list):
+        json_strings = []
+        for item in json_list:
+            json_strings.append(json.dumps(item))
+        return json_strings
+
 
 if __name__ == '__main__':
     datainput = DataInput()

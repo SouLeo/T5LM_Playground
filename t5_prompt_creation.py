@@ -23,7 +23,8 @@ def create_prompt_tokens(prompt_size: int):
 
     return prompt_tokens, prompt_token_initializations
 
+
 if __name__ == '__main__':
+    # TODO: Create prompt class for different initialization strategies
     print('you are running prompt tuning')
 
-    # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
