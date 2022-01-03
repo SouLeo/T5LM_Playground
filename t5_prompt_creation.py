@@ -1,0 +1,29 @@
+import random
+
+
+def create_model_inputs(prompt_tokens: list, training_prompts: list):
+    prompt_tokens_as_str = ' '.join(prompt_tokens)
+    model_inputs = []
+    for i in range(len(training_prompts)):
+        model_inputs.append(prompt_tokens_as_str + ' ' + training_prompts[i])
+
+    return model_inputs
+
+
+def create_prompt_tokens(prompt_size: int):
+    # using random initialization
+    prompt_tokens = []
+    for i in range(0, prompt_size):
+        prompt_tokens.append('PROMPT_TOKEN' + str(i))
+
+    prompt_token_initializations = []
+    for i in range(0, prompt_size):
+        n = random.uniform(-0.5, 0.5)
+        prompt_token_initializations.append(n)
+
+    return prompt_tokens, prompt_token_initializations
+
+if __name__ == '__main__':
+    print('you are running prompt tuning')
+
+    # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
