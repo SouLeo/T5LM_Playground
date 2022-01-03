@@ -41,10 +41,11 @@ if __name__ == '__main__':
     tokenizer = transformers.T5Tokenizer.from_pretrained('t5-small')
     model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
     model = model.to(device)
+    model.parallelize()
     inputs_encoded, attention_mask = torch.tensor(tokenizer(inputs).data['input_ids']).to(device), torch.tensor(tokenizer(inputs).data['attention_mask']).to(device),
     labels_encoded = torch.tensor(helper_functions.add_padding(tokenizer(training_labels).data['input_ids']))
     labels_encoded[labels_encoded == tokenizer.pad_token_id] = -100
 
-    loss = model(input_ids=inputs_encoded).forward
+    loss = model(input_ids=inputs_encoded, decoder_input_ids=labels_encoded).loss
     print(loss)
     print('end')
