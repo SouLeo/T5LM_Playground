@@ -1,8 +1,7 @@
 import torch
-
+import transformers
 import data_input
 import t5_prompt_creation
-import transformers
 
 
 def check_sequence_len(max_len: int, inputs: list):
@@ -63,12 +62,11 @@ if __name__ == '__main__':
     # model setup
     tokenizer = transformers.T5Tokenizer.from_pretrained('t5-small')
     model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
-    inputs_encoded, attention_mask = tokenizer(inputs).data['input_ids'], tokenizer(inputs).data['attention_mask'],
+    inputs_encoded, attention_mask = torch.tensor(tokenizer(inputs).data['input_ids']), tokenizer(inputs).data['attention_mask'],
     labels_encoded = torch.tensor(add_padding(tokenizer(training_labels).data['input_ids']))
     labels_encoded[labels_encoded == tokenizer.pad_token_id] = -100
 
-    input_tensor = torch.tensor(inputs_encoded)
-    loss = model(input_ids=input_tensor).loss
+    loss = model(input_ids=inputs_encoded).loss
     print(loss)
     print('end')
 
