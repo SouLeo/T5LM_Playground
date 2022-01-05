@@ -1,4 +1,5 @@
 import torch
+from torch.utils.data import TensorDataset, DataLoader
 import transformers
 import data_input
 import t5_prompt_creation
@@ -9,13 +10,13 @@ if __name__ == '__main__':
     print('you are running the training program')
 
     # checking if gpu can be used in training
-#    if torch.cuda.is_available():
-#        device = torch.device('cuda')
-#        print('gpu found')
-#    else:
-#        device = torch.device('cpu')
-#        print('using cpu')
-    device = torch.device('cpu')
+    if torch.cuda.is_available():
+        device = torch.device('cuda')
+        print('gpu found')
+    else:
+        device = torch.device('cpu')
+        print('using cpu')
+#    device = torch.device('cpu')
 
     # Collecting Data
     datainput = data_input.DataInput()
@@ -39,18 +40,25 @@ if __name__ == '__main__':
     # end of sequence length checks
 
     # model setup
-    max_source_length = 512
-    max_target_length = 512
+    max_source_length = 128
+    max_target_length = 128
 
     tokenizer = transformers.T5Tokenizer.from_pretrained('t5-small')
     model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
-#    model = model.to(device)
-#    model.parallelize()
-    inputs_encoded, attention_mask = tokenizer(inputs[0], return_tensors="pt").data['input_ids'].to(device), tokenizer(inputs[0], return_tensors="pt").data['attention_mask'].to(device),
-    labels_encoded = torch.tensor(tokenizer(training_labels[0]).data['input_ids'])
-    labels_encoded[labels_encoded == tokenizer.pad_token_id] = -100
-    labels = labels_encoded.unsqueeze(0)
+    model = model.to(device)
+    model.parallelize()
+    model_inputs = tokenizer(inputs, max_length=max_source_length, padding="longest", truncation=True, return_tensors="pt").data
+    input_ids = model_inputs['input_ids'].to(device)
+    attention_mask = model_inputs['attention_mask'].to(device)
 
-    loss = model(input_ids=inputs_encoded, decoder_input_ids=labels)
-    print(loss)
+    labels_encoded = torch.tensor(tokenizer(training_labels, max_length=max_target_length, padding="longest", truncation=True).data['input_ids']).to(device)
+    labels_encoded[labels_encoded == tokenizer.pad_token_id] = -100
+
+    training_dataset = TensorDataset(input_ids, labels_encoded)
+    training_data_loader = DataLoader(training_dataset, shuffle=True, batch_size=8)
+
+    for batch in training_data_loader:
+        # print(batch[0].size())
+        # print(batch[1].size())
+        outputs = model(batch[0], decoder_input_ids=batch[1])
     print('end')
