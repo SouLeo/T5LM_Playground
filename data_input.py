@@ -4,7 +4,7 @@ import json
 
 class DataInput:
     def __init__(self):
-        self.file_path = '/work2/07769/slwanna/maverick2/T5LM_Playground/sid-data'
+        self.file_path = os.getcwd() + '/sid-data'
         self.data = self.extract_umrf_data()
         self.training_split = 251
 
