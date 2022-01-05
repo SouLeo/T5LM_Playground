@@ -9,12 +9,13 @@ if __name__ == '__main__':
     print('you are running the training program')
 
     # checking if gpu can be used in training
-    if torch.cuda.is_available():
-        device = torch.device('cuda')
-        print('gpu found')
-    else:
-        device = torch.device('cpu')
-        print('using cpu')
+#    if torch.cuda.is_available():
+#        device = torch.device('cuda')
+#        print('gpu found')
+#    else:
+#        device = torch.device('cpu')
+#        print('using cpu')
+    device = torch.device('cpu')
 
     # Collecting Data
     datainput = data_input.DataInput()
@@ -38,14 +39,18 @@ if __name__ == '__main__':
     # end of sequence length checks
 
     # model setup
+    max_source_length = 512
+    max_target_length = 512
+
     tokenizer = transformers.T5Tokenizer.from_pretrained('t5-small')
     model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
-    model = model.to(device)
-    model.parallelize()
-    inputs_encoded, attention_mask = torch.tensor(tokenizer(inputs).data['input_ids']).to(device), torch.tensor(tokenizer(inputs).data['attention_mask']).to(device),
-    labels_encoded = torch.tensor(helper_functions.add_padding(tokenizer(training_labels).data['input_ids']))
+#    model = model.to(device)
+#    model.parallelize()
+    inputs_encoded, attention_mask = tokenizer(inputs[0], return_tensors="pt").data['input_ids'].to(device), tokenizer(inputs[0], return_tensors="pt").data['attention_mask'].to(device),
+    labels_encoded = torch.tensor(tokenizer(training_labels[0]).data['input_ids'])
     labels_encoded[labels_encoded == tokenizer.pad_token_id] = -100
+    labels = labels_encoded.unsqueeze(0)
 
-    loss = model(input_ids=inputs_encoded, decoder_input_ids=labels_encoded).loss
+    loss = model(input_ids=inputs_encoded, decoder_input_ids=labels)
     print(loss)
     print('end')

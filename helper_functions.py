@@ -25,7 +25,7 @@ def add_padding(examples: list):
     #     if len(item) > max_val:
     #         max_val = len(item)
     #
-    max_val = 255
+    max_val = 280
     for ex in examples:
         ex.extend([0] * (max_val - len(ex)))
     return examples
