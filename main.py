@@ -7,6 +7,7 @@ import t5_prompt_creation
 import helper_functions
 
 
+# TODO: Clean up this code and play with model input sizing for exs  and labels
 if __name__ == '__main__':
     print('you are running the training program')
 
@@ -43,9 +44,9 @@ if __name__ == '__main__':
     training_labels = helper_functions.check_sequence_len(max_seq_len, training_labels)
     # end of sequence length checks
 
-    # check validation inputs & labels for seq len
-    valid_inputs = helper_functions.check_sequence_len(max_seq_len, valid_inputs)
-    valid_labels = helper_functions.check_sequence_len(max_seq_len, valid_labels)
+    # # check validation inputs & labels for seq len
+    # valid_inputs = helper_functions.check_sequence_len(max_seq_len, valid_inputs)
+    # valid_labels = helper_functions.check_sequence_len(max_seq_len, valid_labels)
 
 
     # preprocessor = DataPreProcessing()
@@ -77,11 +78,11 @@ if __name__ == '__main__':
     # end getting training model inputs
 
     # getting validation model inputs
-    v_model_inputs = tokenizer(valid_inputs, max_length=max_source_length, padding="longest", truncation=True, return_tensors="pt").data
+    v_model_inputs = tokenizer(valid_inputs, max_length=1000, padding="longest", truncation=True, return_tensors="pt").data
     v_input_ids = v_model_inputs['input_ids'].to(device)
     v_attention_mask = v_model_inputs['attention_mask'].to(device)
 
-    v_labels_encoded = torch.tensor(tokenizer(valid_labels, max_length=max_target_length, padding="longest", truncation=True).data['input_ids']).to(device)
+    v_labels_encoded = torch.tensor(tokenizer(valid_labels, max_length=10000, padding="longest", truncation=True).data['input_ids']).to(device)
     # lm_labels = tokenizer.encode(training_labels, return_tensors='pt').to(device)
     v_labels_encoded[v_labels_encoded == tokenizer.pad_token_id] = -100
 
@@ -89,36 +90,49 @@ if __name__ == '__main__':
     valid_data_loader = DataLoader(valid_dataset, shuffle=False, batch_size=8)
     # end getting validation inputs
 
-    # Training Loop
-    max_epochs = 1  # 9 or 10 best
-    total_epochs = range(max_epochs)
-    for epoch in total_epochs:
-        model.train()
-        for batch in training_data_loader:
-            optimizer.zero_grad()
-            out = model(input_ids=batch[0], labels=batch[2])
-            # outputs = model(input_ids=batch[0], attention_mask=batch[1], decoder_input_ids=batch[2])  #, lm_labels=lm_labels)
-            loss = out.loss
-            # print('loss ', loss.item())
-            loss.backward()
-            optimizer.step()
 
-        # Validation per training
-        losses = []
-        model.eval()
-        for batch in valid_data_loader:
-            with torch.no_grad():
-                outputs = model(input_ids=batch[0], labels=batch[2])
-            losses.append(outputs.loss.item())
-        losses = torch.FloatTensor(losses)
-        avg_loss = torch.mean(losses)
-        print('loss: ', avg_loss)
+    # print(model)
+    # # Debugging labels
+    # for batch in training_data_loader:
+    #     generated_ids = model.generate(batch[2], max_length=50)
+    #     for ex in generated_ids:
+    #         debug_labels = tokenizer.batch_decode(ex, skip_special_tokens=True)
+    #         print(debug_labels)
+
+    #
+    # # Training Loop
+    # max_epochs = 1  # 6 or 9 or 10 best
+    # total_epochs = range(max_epochs)
+    # for epoch in total_epochs:
+    #     model.train()
+    #     for batch in training_data_loader:
+    #         optimizer.zero_grad()
+    #         out = model(input_ids=batch[0], labels=batch[2])
+    #         # outputs = model(input_ids=batch[0], attention_mask=batch[1], decoder_input_ids=batch[2])  #, lm_labels=lm_labels)
+    #         loss = out.loss
+    #         # print('loss ', loss.item())
+    #         loss.backward()
+    #         optimizer.step()
+    #
+    #     # Validation per training
+    #     losses = []
+    #     model.eval()
+    #     for batch in valid_data_loader:
+    #         with torch.no_grad():
+    #             outputs = model(input_ids=batch[0], labels=batch[2])
+    #         losses.append(outputs.loss.item())
+    #     losses = torch.FloatTensor(losses)
+    #     avg_loss = torch.mean(losses)
+    #     print('loss: ', avg_loss)
 
     # Inference from Validation
     print('beginning inference')
     for batch in valid_data_loader:
-        generated_ids = model.generate(batch[0])
-        for ex in generated_ids:
-            pred_json_labels = tokenizer.batch_decode(ex, skip_special_tokens=True)
-            print(pred_json_labels)
+        non_gen_exs = batch[0]
+        generated_ids = model.generate(batch[0], max_length=1000)
+
+        pred_json_labels = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
+        non_pred_labels = tokenizer.decode(non_gen_exs[0], skip_special_tokens=True, max_length=1000)
+        print('hi')
+
     print('end')
