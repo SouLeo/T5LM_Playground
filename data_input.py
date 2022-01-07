@@ -8,6 +8,16 @@ class DataInput:
         self.data = self.extract_umrf_data()
         self.training_split = 251
 
+        self.training_jsons = None
+        self.training_jsons_str = None
+        self.train_nl_prompts = None
+        self.get_training_data()
+
+        self.valid_jsons = None
+        self.valid_jsons_str = None
+        self.valid_nl_prompts = None
+        self.get_valid_data()
+
     def get_nl_prompt(self, json_dicts: list):
         nl_prompts = []
         for json in json_dicts:
@@ -37,14 +47,14 @@ class DataInput:
         return json_dicts
 
     def get_training_data(self):
-        training_jsons = self.data[:self.training_split]
-        train_nl_prompts = self.get_nl_prompt(training_jsons)
-        return train_nl_prompts, training_jsons
+        self.training_jsons = self.data[:self.training_split]
+        self.train_nl_prompts = self.get_nl_prompt(self.training_jsons)
+        self.training_jsons_str = self.get_json_as_string(self.training_jsons)
 
     def get_valid_data(self):
-        valid_jsons = self.data[self.training_split:]
-        valid_nl_prompts = self.get_nl_prompt(valid_jsons)
-        return valid_nl_prompts, valid_jsons
+        self.valid_jsons = self.data[self.training_split:]
+        self.valid_nl_prompts = self.get_nl_prompt(self.valid_jsons)
+        self.valid_jsons_str = self.get_json_as_string(self.valid_jsons)
 
     def get_json_as_string(self, json_list: list):
         json_strings = []
