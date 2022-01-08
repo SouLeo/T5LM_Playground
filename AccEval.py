@@ -24,5 +24,11 @@ if __name__ == '__main__':
     # Coarse accuracy ends
 
 
+    # TODO: 
+    # 1) remove broken ground_truth labels
+    # 2) remove broken pred_labels
+    # 3) calculate coarse accuracy
+    # 4) calculate accuracy by jsons
+
     print('end')
 
