@@ -43,18 +43,26 @@ class DataInput:
             with open(self.file_path + '/' + json_file, 'r') as f:
                 json_string = f.read()
                 json_dict = json.loads(json_string)
+                del json_dict['graph_name']
+                del json_dict['graph_state']
                 json_dicts.append(json_dict)
         return json_dicts
 
     def get_training_data(self):
         self.training_jsons = self.data[:self.training_split]
         self.train_nl_prompts = self.get_nl_prompt(self.training_jsons)
-        self.training_jsons_str = self.get_json_as_string(self.training_jsons)
+        labels = []
+        for ex in self.training_jsons:
+            labels.append(ex['umrf_actions'])
+        self.training_jsons_str = self.get_json_as_string(labels)
 
     def get_valid_data(self):
         self.valid_jsons = self.data[self.training_split:]
         self.valid_nl_prompts = self.get_nl_prompt(self.valid_jsons)
-        self.valid_jsons_str = self.get_json_as_string(self.valid_jsons)
+        labels = []
+        for ex in self.valid_jsons:
+            labels.append(ex['umrf_actions'])
+        self.valid_jsons_str = self.get_json_as_string(labels)
 
     def get_json_as_string(self, json_list: list):
         json_strings = []

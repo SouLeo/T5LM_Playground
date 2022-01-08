@@ -22,6 +22,12 @@ def create_data_loader(tokenizer, inputs, labels):
     max_target_length = 128
     model_inputs = tokenizer(inputs, max_length=max_source_length, padding="longest", truncation=True,
                              return_tensors="pt").data
+
+    # debugging
+    # input_ex = model_inputs['input_ids'][0]
+    # nl_inputs = tokenizer.decode(input_ex, skip_special_tokens=True)
+    # end debugging
+
     input_ids = model_inputs['input_ids'].to(device)
 
     labels_encoded = torch.tensor(
@@ -41,7 +47,7 @@ if __name__ == '__main__':
     data_preprocess = DataPreProcessing()
 
     # Required for memory constraints of T5-small?
-    max_seq_len = 512  # Design constraint for t5-small model
+    max_seq_len = 4096  # Design constraint for t5-small model
     training_inputs = helper_functions.check_sequence_len(max_seq_len, data_preprocess.training_input)
     training_labels = helper_functions.check_sequence_len(max_seq_len, data_preprocess.training_labels)
 
@@ -63,7 +69,7 @@ if __name__ == '__main__':
     valid_data_loader = create_data_loader(tokenizer, valid_inputs, valid_labels)
 
     # Training Loop
-    max_epochs = 1  # 6 or 9 or 10 best
+    max_epochs = 6  # 6 or 9 or 10 best
     total_epochs = range(max_epochs)
     for epoch in total_epochs:
         model.train()
@@ -85,13 +91,11 @@ if __name__ == '__main__':
         avg_loss = torch.mean(losses)
         print('loss: ', avg_loss)
 
-    # # Inference from Validation
-    # print('beginning inference')
-    # for batch in valid_data_loader:
-    #     non_gen_exs = batch[0]
-    #     generated_ids = model.generate(batch[0], max_length=1000)
-    #
-    #     pred_json_labels = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
-    #     non_pred_labels = tokenizer.decode(non_gen_exs[0], skip_special_tokens=True, max_length=1000)
+    # Inference from Validation
+    print('beginning inference')
+    for batch in valid_data_loader:
+        generated_ids = model.generate(batch[0], max_length=10000)
+        pred_json_labels = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
+        print(pred_json_labels)
 
     print('end')
