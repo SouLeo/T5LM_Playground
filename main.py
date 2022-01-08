@@ -19,20 +19,15 @@ def check_for_gpu():
 
 def create_data_loader(tokenizer, inputs, labels):
     max_source_length = 512
-    max_target_length = 128
+    max_target_length = 256
     model_inputs = tokenizer(inputs, max_length=max_source_length, padding="longest", truncation=True,
                              return_tensors="pt").data
 
-    # debugging
-    # input_ex = model_inputs['input_ids'][0]
-    # nl_inputs = tokenizer.decode(input_ex, skip_special_tokens=True)
-    # end debugging
-
     input_ids = model_inputs['input_ids'].to(device)
-
     labels_encoded = torch.tensor(
         tokenizer(labels, max_length=max_target_length, padding="longest", truncation=True).data[
             'input_ids']).to(device)
+
     labels_encoded[labels_encoded == tokenizer.pad_token_id] = -100
 
     training_dataset = TensorDataset(input_ids, labels_encoded)
@@ -57,9 +52,13 @@ if __name__ == '__main__':
 
     # model setup
     tokenizer = transformers.T5Tokenizer.from_pretrained('t5-small')
+    punct_tokens = ['{', '}']
+    tokenizer.add_tokens(punct_tokens)
     # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
     model = transformers.T5ForConditionalGeneration.from_pretrained('t5-small').to(device)
+    # print(model.config)
     if device.type == 'cuda':
+        # TODO: Ensure the parallelization is actually being utilized during model.generate on TACC
         print('model parallelization on gpu')
         model.parallelize()
     optimizer = transformers.AdamW(model.parameters(), lr=0.001)
@@ -68,8 +67,20 @@ if __name__ == '__main__':
     training_data_loader = create_data_loader(tokenizer, training_inputs, training_labels)
     valid_data_loader = create_data_loader(tokenizer, valid_inputs, valid_labels)
 
+    # Debugging
+    # ground_truths = []
+    # for batch in training_data_loader:
+    #     # Try to convert actual labels from id's to tokens
+    #     truth_labels_debug = batch[1]
+    #     truth_labels_debug[truth_labels_debug == -100] = tokenizer.pad_token_id
+    #     truth_labels = tokenizer.batch_decode(truth_labels_debug, skip_special_tokens=True)
+    #     for label in truth_labels:
+    #         ground_truths.append(label)
+    #     print('hi')
+    # End debugging
+
     # Training Loop
-    max_epochs = 6  # 6 or 9 or 10 best
+    max_epochs = 10  # 6 or 9 or 10 best
     total_epochs = range(max_epochs)
     for epoch in total_epochs:
         model.train()
@@ -93,9 +104,28 @@ if __name__ == '__main__':
 
     # Inference from Validation
     print('beginning inference')
+    predictions = []
+    ground_truths = []
     for batch in valid_data_loader:
-        generated_ids = model.generate(batch[0], max_length=1000000)
-        pred_json_labels = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
-        print(pred_json_labels)
+        generated_ids = model.generate(batch[0], max_length=1000)
+        pred_json_labels = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
+        for preds in pred_json_labels:
+            predictions.append(preds)
+        # Try to convert actual labels from id's to tokens
+        truth_labels_debug = batch[1]
+        truth_labels_debug[truth_labels_debug == -100] = tokenizer.pad_token_id
+        truth_labels = tokenizer.batch_decode(truth_labels_debug, skip_special_tokens=True)
+        for label in truth_labels:
+            ground_truths.append(label)
+
+    pred_file = open('preds.txt', 'w')
+    for ex in predictions:
+        pred_file.write(ex + '\n')
+    pred_file.close()
+
+    label_file = open('truths.txt', 'w')
+    for ex in ground_truths:
+        label_file.write(ex + '\n')
+    label_file.close()
 
     print('end')
