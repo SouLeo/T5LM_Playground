@@ -94,7 +94,7 @@ if __name__ == '__main__':
     # Inference from Validation
     print('beginning inference')
     for batch in valid_data_loader:
-        generated_ids = model.generate(batch[0], max_length=10000)
+        generated_ids = model.generate(batch[0], max_length=1000000)
         pred_json_labels = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
         print(pred_json_labels)
 

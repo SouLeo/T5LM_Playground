@@ -53,7 +53,13 @@ class DataInput:
         self.train_nl_prompts = self.get_nl_prompt(self.training_jsons)
         labels = []
         for ex in self.training_jsons:
-            labels.append(ex['umrf_actions'])
+            items_list = []
+            for items in ex['umrf_actions']:
+                del items['id']
+                del items['effect']
+                del items['package_name']
+                items_list.append(items)
+            labels.append(items_list)
         self.training_jsons_str = self.get_json_as_string(labels)
 
     def get_valid_data(self):
@@ -61,7 +67,13 @@ class DataInput:
         self.valid_nl_prompts = self.get_nl_prompt(self.valid_jsons)
         labels = []
         for ex in self.valid_jsons:
-            labels.append(ex['umrf_actions'])
+            items_list = []
+            for items in ex['umrf_actions']:
+                del items['id']
+                del items['effect']
+                del items['package_name']
+                items_list.append(items)
+            labels.append(items_list)
         self.valid_jsons_str = self.get_json_as_string(labels)
 
     def get_json_as_string(self, json_list: list):
