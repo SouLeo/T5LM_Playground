@@ -1,4 +1,5 @@
 import json
+from statistics import mean
 
 if __name__ == '__main__':
     # Read in data inputs
@@ -12,23 +13,100 @@ if __name__ == '__main__':
         for line in pred_file:
             preds.append(line.strip())
 
+
+    # truth_jsons = []
+    # pred_jsons = []
+    # for i in range(len(truths)):
+    #     try:
+    #         true_json = json.loads(truths[i])
+    #         pred_json = json.loads(preds[i])
+    #
+    #         truth_jsons.append(true_json)
+    #         pred_jsons.append(pred_json)
+    #     except:
+    #         truth_jsons.append('nan')
+    #         pred_jsons.append('nan')
+    #         # print('issues converting examples to jsons')
+    invalid_pred_jsons = []
+    corresponding_labels_json = []
+    truth_jsons = []
+    pred_jsons = []
+    for i in range(len(truths)):
+        try:
+            true_json = json.loads(truths[i])
+            truth_jsons.append(true_json)
+        except:
+            truth_jsons.append('nan')
+            pred_jsons.append('nan')
+            continue
+        try:
+            pred_json = json.loads(preds[i])
+            pred_jsons.append(pred_json)
+        except:
+            pred_jsons.append('nan')
+            invalid_pred_jsons.append(preds[i])
+            corresponding_labels_json.append(truths[i])
+
+
+            # print('issues converting examples to jsons')
+
+    correct_names = []
+    correct_description = []
+    correct_input_params = []
+    num_of_invalid_jsons = []
+    for i in range(len(truth_jsons)):
+        if truth_jsons[i] != 'nan':
+            if pred_jsons[i] == 'nan':
+                num_of_invalid_jsons.append(1)
+                continue
+            else:
+                num_of_invalid_jsons.append(0)
+            label = truth_jsons[i]
+            pred = pred_jsons[i]
+            for j in range(len(label)):
+                label_action = label[j]
+                pred_action = pred[j]
+                # Check if names are equal
+                if label_action['name'] == pred_action['name']:
+                    correct_names.append(1)
+                else:
+                    correct_names.append(0)
+                # check if descriptions are equal
+                label_stand_desc = ''.join(e for e in label_action['description'] if e.isalnum())
+                pred_stand_desc = ''.join(e for e in pred_action['description'] if e.isalnum())
+                if label_stand_desc == pred_stand_desc:
+                    correct_description.append(1)
+                else:
+                    correct_description.append(0)
+                # check input params
+                label_input_param_keys = label_action['input_parameters'].keys()
+                pred_input_param_keys = pred_action['input_parameters'].keys()
+                if label_input_param_keys == pred_input_param_keys:
+                    for item in label_input_param_keys:
+                        a = ''.join(e for e in label_action['input_parameters'][item]['pvf_example'] if e.isalnum())
+                        b = ''.join(e for e in pred_action['input_parameters'][item]['pvf_example'] if e.isalnum())
+                        if a == b:
+                            correct_input_params.append(1)
+                        else:
+                            correct_input_params.append(0)
+                else:
+                    print('input keys misaligned or do not match')
+
     # Coarse accuracy begins
-    # score = 0
-    # for i in range(len(truth_jsons)):
-    #     if truth_jsons[i] == pred_jsons[i]:
-    #         score = score + 1
-    #     else:
-    #         print(truth_jsons[i])
-    #         print(pred_jsons[i])
-    # print('coarse acc is ' + str(score) + '/42')
+    mean_correct_description = mean(correct_description)
+    mean_correct_input_params = mean(correct_input_params)
+    mean_correct_names = mean(correct_names)
     # Coarse accuracy ends
+    print('avg description correct: ', mean_correct_description)
+    print('avg input params correct: ', mean_correct_input_params)
+    print('avg names correct: ', mean_correct_names)
 
-
-    # TODO: 
-    # 1) remove broken ground_truth labels
-    # 2) remove broken pred_labels
-    # 3) calculate coarse accuracy
-    # 4) calculate accuracy by jsons
-
+    total = sum(num_of_invalid_jsons)
+    print('num invalid pred jsons: ', total)
+    print('invalid pred jsons:')
+    for i in range(total):
+        print('prediction: ', invalid_pred_jsons[i])
+        print('label: ', corresponding_labels_json[i])
+        print('\n')
     print('end')
 
