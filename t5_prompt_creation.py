@@ -27,6 +27,7 @@ def create_prompt_tokens(prompt_size: int):
 def ensemble_prompt_creation(prompt_size: int, training_prompts):
     prompt_tokens, prompt_inits = create_prompt_tokens(prompt_size)
     inputs = create_model_inputs(prompt_tokens, training_prompts)
+    return inputs
 
 if __name__ == '__main__':
     # TODO: Create prompt class for different initialization strategies

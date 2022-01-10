@@ -1,3 +1,4 @@
+import os
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 import transformers
@@ -101,6 +102,9 @@ if __name__ == '__main__':
         losses = torch.FloatTensor(losses)
         avg_loss = torch.mean(losses)
         print('loss: ', avg_loss)
+
+    model.save_pretrained(save_directory=os.getcwd() + '/saved_model', save_config=True)
+    tokenizer.save_pretrained(save_directory=os.getcwd() + '/saved_tokenizer')
 
     # Inference from Validation
     print('beginning inference')
