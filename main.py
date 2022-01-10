@@ -81,7 +81,7 @@ if __name__ == '__main__':
     # End debugging
 
     # Training Loop
-    max_epochs = 15  # 6 or 9 or 10 best
+    max_epochs = 25  # 6 or 9 or 10 best
     total_epochs = range(max_epochs)
     for epoch in total_epochs:
         model.train()

@@ -6,7 +6,7 @@ class DataInput:
     def __init__(self):
         self.file_path = os.getcwd() + '/sid-data'
         self.data = self.extract_umrf_data()
-        self.training_split = 251
+        # self.training_split = 251  # len(self.data)
 
         self.training_jsons = None
         self.training_jsons_str = None
@@ -54,7 +54,8 @@ class DataInput:
         return json_dicts
 
     def get_training_data(self):
-        self.training_jsons = self.data[:self.training_split]
+        # self.training_jsons = self.data[:self.training_split]
+        self.training_jsons = self.data
         self.train_nl_prompts = self.get_nl_prompt(self.training_jsons)
         labels = []
         for ex in self.training_jsons:
@@ -68,15 +69,16 @@ class DataInput:
         self.training_jsons_str = self.get_json_as_string(labels)
 
     def get_valid_data(self):
-        self.valid_jsons = self.data[self.training_split:]
+        # self.valid_jsons = self.data[self.training_split:]
+        self.valid_jsons = self.data
         self.valid_nl_prompts = self.get_nl_prompt(self.valid_jsons)
         labels = []
         for ex in self.valid_jsons:
             items_list = []
             for items in ex['umrf_actions']:
-                del items['id']
-                del items['effect']
-                del items['package_name']
+                # del items['id']
+                # del items['effect']
+                # del items['package_name']
                 items_list.append(items)
             labels.append(items_list)
         self.valid_jsons_str = self.get_json_as_string(labels)

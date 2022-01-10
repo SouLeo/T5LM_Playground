@@ -93,10 +93,12 @@ if __name__ == '__main__':
                     print('input keys misaligned or do not match')
 
     # Coarse accuracy begins
+    num_exs = len(correct_description)
     mean_correct_description = mean(correct_description)
     mean_correct_input_params = mean(correct_input_params)
     mean_correct_names = mean(correct_names)
     # Coarse accuracy ends
+    print(str(num_exs))
     print('avg description correct: ', mean_correct_description)
     print('avg input params correct: ', mean_correct_input_params)
     print('avg names correct: ', mean_correct_names)
