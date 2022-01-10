@@ -26,6 +26,11 @@ class DataInput:
 
     def extract_umrf_data(self):
         json_list = [pos_json for pos_json in os.listdir(self.file_path) if pos_json.endswith('.json')]
+        # # debug
+        # flag = False
+        # if 'umrf_graph_363.umrfg.json' in json_list:
+        #     flag = True
+        # # debug
         json_list_cropped = [e[11:] for e in json_list]
         json_list_cropped = [e[:-11] for e in json_list_cropped]
         json_cropped_int = [int(x) for x in json_list_cropped]

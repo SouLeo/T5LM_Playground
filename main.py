@@ -103,6 +103,7 @@ if __name__ == '__main__':
         avg_loss = torch.mean(losses)
         print('loss: ', avg_loss)
 
+    print('saving model + tokenizer')
     model.save_pretrained(save_directory=os.getcwd() + '/saved_model', save_config=True)
     tokenizer.save_pretrained(save_directory=os.getcwd() + '/saved_tokenizer')
 
