@@ -57,6 +57,14 @@ if __name__ == '__main__':
     tokenizer.add_tokens(punct_tokens)
     # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
     model = transformers.T5ForConditionalGeneration.from_pretrained('t5-small').to(device)
+
+    pt_iter = 0
+    for param in model.base_model.parameters():
+        if pt_iter == 0:
+            pt_iter = 1 + pt_iter
+            continue
+        param.requires_grad = False
+        pt_iter = 1 + pt_iter
     # print(model.config)
     if device.type == 'cuda':
         # TODO: Ensure the parallelization is actually being utilized during model.generate on TACC
@@ -81,10 +89,11 @@ if __name__ == '__main__':
     # End debugging
 
     # Training Loop
-    max_epochs = 25  # 6 or 9 or 10 best
+    max_epochs = 1500  # 6 or 9 or 10 best
     total_epochs = range(max_epochs)
     for epoch in total_epochs:
         model.train()
+        # Prompt Tuning?
         for batch in training_data_loader:
             optimizer.zero_grad()
             out = model(input_ids=batch[0], labels=batch[1])
