@@ -72,15 +72,11 @@ if __name__ == '__main__':
     vocab = range(3218)
     prompt_token_indices = range(prompt_size)
     prompt_token_indices = [x + 32100 for x in prompt_token_indices]
-    mask = list(set(vocab)^set(prompt_token_indices))
+    mask = list(set(vocab) ^ set(prompt_token_indices))
     # End of Prompt Tuning Enforcement
 
     # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
     model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
-
-    # embedding_test = model.shared
-    # hi = embedding_test.weight
-    # promtpt0 = hi[32100, :]
 
     pt_iter = 0
     for param in model.base_model.parameters():
@@ -91,7 +87,6 @@ if __name__ == '__main__':
         pt_iter = 1 + pt_iter
 
     if device.type == 'cuda':
-        # TODO: Ensure the parallelization is actually being utilized during model.generate on TACC
         print('model parallelization on gpu')
         model.parallelize()
     optimizer = transformers.AdamW(model.parameters(), lr=0.001)
