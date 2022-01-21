@@ -9,3 +9,6 @@ class DataPreProcessing:
 
         self.training_input = t5_prompt_creation.create_model_inputs(self.prompt_tokens, self.datainput.train_nl_prompts)
         self.training_labels = self.datainput.training_jsons_str
+
+    def get_prompt_tokens(self):
+        return self.prompt_tokens

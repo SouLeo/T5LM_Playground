@@ -62,10 +62,17 @@ if __name__ == '__main__':
 
     # model setup
     tokenizer = transformers.T5Tokenizer.from_pretrained(model_name)
+    prompt_tokens = data_preprocess.get_prompt_tokens()
+    tokenizer.add_tokens(prompt_tokens)
     punct_tokens = ['{', '}']
     tokenizer.add_tokens(punct_tokens)
+
     # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
     model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
+
+    # embedding_test = model.shared
+    # hi = embedding_test.weight
+    # promtpt0 = hi[32100, :]
 
     pt_iter = 0
     for param in model.base_model.parameters():
