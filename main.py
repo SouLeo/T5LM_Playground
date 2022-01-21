@@ -50,10 +50,11 @@ if __name__ == '__main__':
     model_save_name = args[3]
     token_save_name = args[4]
 
+    prompt_size = 10
     print('you are running the training program')
     device = check_for_gpu()
 
-    data_preprocess = DataPreProcessing()
+    data_preprocess = DataPreProcessing(10)
 
     # Required for memory constraints of T5-small?
     max_seq_len = 4096  # Design constraint for t5-small model
@@ -66,6 +67,13 @@ if __name__ == '__main__':
     tokenizer.add_tokens(prompt_tokens)
     punct_tokens = ['{', '}']
     tokenizer.add_tokens(punct_tokens)
+
+    # Ensure Prompts are only Tuned
+    vocab = range(3218)
+    prompt_token_indices = range(prompt_size)
+    prompt_token_indices = [x + 32100 for x in prompt_token_indices]
+    mask = list(set(vocab)^set(prompt_token_indices))
+    # End of Prompt Tuning Enforcement
 
     # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
     model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
@@ -102,6 +110,7 @@ if __name__ == '__main__':
             out = model(input_ids=batch[0], labels=batch[1])
             loss = out.loss
             loss.backward()
+            model.shared.weight.grad[mask] = 0
             optimizer.step()
 
         # Validation per training
