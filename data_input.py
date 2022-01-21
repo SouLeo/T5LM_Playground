@@ -13,11 +13,6 @@ class DataInput:
         self.train_nl_prompts = None
         self.get_training_data()
 
-        self.valid_jsons = None
-        self.valid_jsons_str = None
-        self.valid_nl_prompts = None
-        self.get_valid_data()
-
     def get_nl_prompt(self, json_dicts: list):
         nl_prompts = []
         for json in json_dicts:
@@ -26,11 +21,6 @@ class DataInput:
 
     def extract_umrf_data(self):
         json_list = [pos_json for pos_json in os.listdir(self.file_path) if pos_json.endswith('.json')]
-        # # debug
-        # flag = False
-        # if 'umrf_graph_363.umrfg.json' in json_list:
-        #     flag = True
-        # # debug
         json_list_cropped = [e[11:] for e in json_list]
         json_list_cropped = [e[:-11] for e in json_list_cropped]
         json_cropped_int = [int(x) for x in json_list_cropped]
@@ -68,21 +58,6 @@ class DataInput:
             labels.append(items_list)
         self.training_jsons_str = self.get_json_as_string(labels)
 
-    def get_valid_data(self):
-        # self.valid_jsons = self.data[self.training_split:]
-        self.valid_jsons = self.data
-        self.valid_nl_prompts = self.get_nl_prompt(self.valid_jsons)
-        labels = []
-        for ex in self.valid_jsons:
-            items_list = []
-            for items in ex['umrf_actions']:
-                # del items['id']
-                # del items['effect']
-                # del items['package_name']
-                items_list.append(items)
-            labels.append(items_list)
-        self.valid_jsons_str = self.get_json_as_string(labels)
-
     def get_json_as_string(self, json_list: list):
         json_strings = []
         for item in json_list:
@@ -94,5 +69,4 @@ if __name__ == '__main__':
     datainput = DataInput()
     print('you are running data input with file path: ' + datainput.file_path)
     training_prompts, training_jsons = datainput.get_training_data()
-    valid_prompts, valid_jsons = datainput.get_valid_data()
     print('data collection finished')

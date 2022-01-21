@@ -1,6 +1,7 @@
+import sys
 import os
 import torch
-from torch.utils.data import TensorDataset, DataLoader
+from torch.utils.data import TensorDataset, DataLoader, random_split
 import transformers
 from DataPreProcessing import DataPreProcessing
 import helper_functions
@@ -18,7 +19,7 @@ def check_for_gpu():
     return device
 
 
-def create_data_loader(tokenizer, inputs, labels):
+def create_data_loaders(tokenizer, inputs, labels):
     max_source_length = 512
     max_target_length = 256
     model_inputs = tokenizer(inputs, max_length=max_source_length, padding="longest", truncation=True,
@@ -32,11 +33,23 @@ def create_data_loader(tokenizer, inputs, labels):
     labels_encoded[labels_encoded == tokenizer.pad_token_id] = -100
 
     training_dataset = TensorDataset(input_ids, labels_encoded)
-    return DataLoader(training_dataset, shuffle=True, batch_size=8)
+
+    results = random_split(training_dataset, [340, 38], generator=torch.Generator().manual_seed(42))
+    training_ds = results[0]
+    valid_ds = results[1]
+    return DataLoader(training_ds, shuffle=True, batch_size=8), DataLoader(valid_ds, shuffle=True, batch_size=8)
 
 
 # TODO: Clean up this code and play with model input sizing for exs  and labels
 if __name__ == '__main__':
+    # Example Command:
+    # Python3 main.py 1500 t5-small /saved_model /saved_tokenizer
+    args = sys.argv
+    epochs = int(args[1])
+    model_name = args[2]
+    model_save_name = args[3]
+    token_save_name = args[4]
+
     print('you are running the training program')
     device = check_for_gpu()
 
@@ -47,16 +60,12 @@ if __name__ == '__main__':
     training_inputs = helper_functions.check_sequence_len(max_seq_len, data_preprocess.training_input)
     training_labels = helper_functions.check_sequence_len(max_seq_len, data_preprocess.training_labels)
 
-    valid_inputs = helper_functions.check_sequence_len(max_seq_len, data_preprocess.valid_input)
-    valid_labels = helper_functions.check_sequence_len(max_seq_len, data_preprocess.valid_labels)
-    # end of sequence length checks
-
     # model setup
-    tokenizer = transformers.T5Tokenizer.from_pretrained('t5-small')
+    tokenizer = transformers.T5Tokenizer.from_pretrained(model_name)
     punct_tokens = ['{', '}']
     tokenizer.add_tokens(punct_tokens)
     # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
-    model = transformers.T5ForConditionalGeneration.from_pretrained('t5-small').to(device)
+    model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
 
     pt_iter = 0
     for param in model.base_model.parameters():
@@ -65,7 +74,7 @@ if __name__ == '__main__':
             continue
         param.requires_grad = False
         pt_iter = 1 + pt_iter
-    # print(model.config)
+
     if device.type == 'cuda':
         # TODO: Ensure the parallelization is actually being utilized during model.generate on TACC
         print('model parallelization on gpu')
@@ -73,23 +82,10 @@ if __name__ == '__main__':
     optimizer = transformers.AdamW(model.parameters(), lr=0.001)
 
     # create data loaders
-    training_data_loader = create_data_loader(tokenizer, training_inputs, training_labels)
-    valid_data_loader = create_data_loader(tokenizer, valid_inputs, valid_labels)
-
-    # Debugging
-    # ground_truths = []
-    # for batch in training_data_loader:
-    #     # Try to convert actual labels from id's to tokens
-    #     truth_labels_debug = batch[1]
-    #     truth_labels_debug[truth_labels_debug == -100] = tokenizer.pad_token_id
-    #     truth_labels = tokenizer.batch_decode(truth_labels_debug, skip_special_tokens=True)
-    #     for label in truth_labels:
-    #         ground_truths.append(label)
-    #     print('hi')
-    # End debugging
+    training_data_loader, valid_data_loader = create_data_loaders(tokenizer, training_inputs, training_labels)
 
     # Training Loop
-    max_epochs = 1500  # 6 or 9 or 10 best
+    max_epochs = epochs  # 6 or 9 or 10 best
     total_epochs = range(max_epochs)
     for epoch in total_epochs:
         model.train()
@@ -113,8 +109,8 @@ if __name__ == '__main__':
         print('loss: ', avg_loss)
 
     print('saving model + tokenizer')
-    model.save_pretrained(save_directory=os.getcwd() + '/saved_model', save_config=True)
-    tokenizer.save_pretrained(save_directory=os.getcwd() + '/saved_tokenizer')
+    model.save_pretrained(save_directory=os.getcwd() + model_save_name, save_config=True)
+    tokenizer.save_pretrained(save_directory=os.getcwd() + token_save_name)
 
     # Inference from Validation
     print('beginning inference')
