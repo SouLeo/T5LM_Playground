@@ -1,4 +1,5 @@
 import sys
+import time
 import os
 import torch
 from torch.utils.data import TensorDataset, DataLoader, random_split
@@ -34,7 +35,7 @@ def create_data_loaders(tokenizer, inputs, labels):
 
     training_dataset = TensorDataset(input_ids, labels_encoded)
 
-    results = random_split(training_dataset, [340, 38], generator=torch.Generator().manual_seed(42))
+    results = random_split(training_dataset, [316, 35], generator=torch.Generator().manual_seed(42))
     training_ds = results[0]
     valid_ds = results[1]
     return DataLoader(training_ds, shuffle=True, batch_size=8), DataLoader(valid_ds, shuffle=True, batch_size=8)
@@ -43,18 +44,18 @@ def create_data_loaders(tokenizer, inputs, labels):
 # TODO: Clean up this code and play with model input sizing for exs  and labels
 if __name__ == '__main__':
     # Example Command:
-    # Python3 main.py 1500 t5-small /saved_model /saved_tokenizer
+    # Python3 main.py 1500 t5-small /saved_model /saved_tokenizer 10
     args = sys.argv
     epochs = int(args[1])
     model_name = args[2]
     model_save_name = args[3]
     token_save_name = args[4]
+    prompt_size = int(args[5])
 
-    prompt_size = 10
     print('you are running the training program')
     device = check_for_gpu()
 
-    data_preprocess = DataPreProcessing(10)
+    data_preprocess = DataPreProcessing(prompt_size)
 
     # Required for memory constraints of T5-small?
     max_seq_len = 4096  # Design constraint for t5-small model
@@ -62,7 +63,7 @@ if __name__ == '__main__':
     training_labels = helper_functions.check_sequence_len(max_seq_len, data_preprocess.training_labels)
 
     # model setup
-    tokenizer = transformers.T5Tokenizer.from_pretrained(model_name)
+    tokenizer = transformers.T5Tokenizer.from_pretrained(model_name, cache_dir=os.getcwd()+'/cache')
     prompt_tokens = data_preprocess.get_prompt_tokens()
     tokenizer.add_tokens(prompt_tokens)
     punct_tokens = ['{', '}']
@@ -76,7 +77,7 @@ if __name__ == '__main__':
     # End of Prompt Tuning Enforcement
 
     # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
-    model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
+    model = transformers.T5ForConditionalGeneration.from_pretrained(model_name, cache_dir=os.getcwd()+'/cache').to(device)
 
     pt_iter = 0
     for param in model.base_model.parameters():
@@ -94,7 +95,9 @@ if __name__ == '__main__':
     # create data loaders
     training_data_loader, valid_data_loader = create_data_loaders(tokenizer, training_inputs, training_labels)
 
+    start_time = time.time()
     # Training Loop
+    epoch_counter = 0
     max_epochs = epochs  # 6 or 9 or 10 best
     total_epochs = range(max_epochs)
     for epoch in total_epochs:
@@ -117,7 +120,11 @@ if __name__ == '__main__':
             losses.append(outputs.loss.item())
         losses = torch.FloatTensor(losses)
         avg_loss = torch.mean(losses)
-        print('loss: ', avg_loss)
+        epoch_counter = epoch_counter + 1
+        if epoch_counter % 1000 == 0:
+            print('epoch: ', epoch_counter)
+            print('loss: ', avg_loss)
+            torch.save({ 'epoch': epoch_counter, 'model_state_dict': model.state_dict(), 'optimizer_state_dict': optimizer.state_dict(), 'loss':loss}, os.getcwd()+'/model_checkpoints' + model_save_name ) 
 
     print('saving model + tokenizer')
     model.save_pretrained(save_directory=os.getcwd() + model_save_name, save_config=True)
