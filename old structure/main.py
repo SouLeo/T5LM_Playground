@@ -19,7 +19,6 @@ def check_for_gpu():
     return device
 
 
-# Create the training and validation dataset dataloaders
 def create_data_loaders(tokenizer, inputs, labels):
     max_source_length = 512
     max_target_length = 256
@@ -41,26 +40,33 @@ def create_data_loaders(tokenizer, inputs, labels):
     return DataLoader(training_ds, shuffle=True, batch_size=8), DataLoader(valid_ds, shuffle=True, batch_size=8)
 
 
+# TODO: Clean up this code and play with model input sizing for exs  and labels
 if __name__ == '__main__':
     # Example Command:
     # Python3 main.py 1500 t5-small /saved_model /saved_tokenizer
     args = sys.argv
-    epochs = int(args[1])  # 20,000
-    model_name = args[2]  # t5-small, t5-base, t5-large
+    epochs = int(args[1])
+    model_name = args[2]
     model_save_name = args[3]
     token_save_name = args[4]
-    prompt_size = int(args[5])  # 50
-    continue_training = args[6]  # True or False
 
+    prompt_size = 10
     print('you are running the training program')
     device = check_for_gpu()
 
-    data_preprocess = DataPreProcessing(prompt_size)
+    data_preprocess = DataPreProcessing(10)
 
     # Required for memory constraints of T5-small?
     max_seq_len = 4096  # Design constraint for t5-small model
     training_inputs = helper_functions.check_sequence_len(max_seq_len, data_preprocess.training_input)
     training_labels = helper_functions.check_sequence_len(max_seq_len, data_preprocess.training_labels)
+
+    # model setup
+    tokenizer = transformers.T5Tokenizer.from_pretrained(model_name)
+    prompt_tokens = data_preprocess.get_prompt_tokens()
+    tokenizer.add_tokens(prompt_tokens)
+    punct_tokens = ['{', '}']
+    tokenizer.add_tokens(punct_tokens)
 
     # Ensure Prompts are only Tuned
     vocab = range(3218)
@@ -69,37 +75,8 @@ if __name__ == '__main__':
     mask = list(set(vocab) ^ set(prompt_token_indices))
     # End of Prompt Tuning Enforcement
 
-    # model setup
-    if continue_training == "false":
-        tokenizer = transformers.T5Tokenizer.from_pretrained(model_name)
-        prompt_tokens = data_preprocess.get_prompt_tokens()
-        tokenizer.add_tokens(prompt_tokens)
-        punct_tokens = ['{', '}']
-        tokenizer.add_tokens(punct_tokens)
-
-        # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
-        model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
-        model.resize_token_embeddings(len(tokenizer))
-        optimizer = transformers.AdamW(model.parameters(), lr=0.001)
-        pt_iter = 0
-
-        # create data loaders
-        training_data_loader, valid_data_loader = create_data_loaders(tokenizer, training_inputs, training_labels)
-        torch.save(training_data_loader, 'training_data_loader-'+model_name)
-        torch.save(valid_data_loader, 'valid_data_loader-'+model_name)
-
-    else:
-        tokenizer = transformers.T5Tokenizer.from_pretrained(os.getcwd()+'/saved_tokenizer')
-        model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
-        model.resize_token_embeddings(len(tokenizer))
-        optimizer = transformers.AdamW(model.parameters(), lr=0.001)
-        checkpoint = torch.load(os.getcwd() + '/model_checkpoint-'+model_name)
-        model.load_state_dict(checkpoint['model_state_dict'])
-        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-        prev_epoch = checkpoint['epoch']
-        loss = checkpoint['loss']
-        training_data_loader = torch.load('training_data_loader-' + model_name)
-        valid_data_loader = torch.load('valid_data_loader-' + model_name)
+    # model = transformers.AutoModel.from_pretrained("google/t5-small-lm-adapt")
+    model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
 
     pt_iter = 0
     for param in model.base_model.parameters():
@@ -112,16 +89,17 @@ if __name__ == '__main__':
     if device.type == 'cuda':
         print('model parallelization on gpu')
         model.parallelize()
+    optimizer = transformers.AdamW(model.parameters(), lr=0.001)
+
+    # create data loaders
+    training_data_loader, valid_data_loader = create_data_loaders(tokenizer, training_inputs, training_labels)
 
     # Training Loop
-    counter = 0
-    max_epochs = epochs
+    max_epochs = epochs  # 6 or 9 or 10 best
     total_epochs = range(max_epochs)
-    if continue_training != 'false':
-        epoch_counter = prev_epoch
-        total_epochs = total_epochs[prev_epoch:]
     for epoch in total_epochs:
         model.train()
+        # Prompt Tuning?
         for batch in training_data_loader:
             optimizer.zero_grad()
             out = model(input_ids=batch[0], labels=batch[1])
@@ -139,18 +117,36 @@ if __name__ == '__main__':
             losses.append(outputs.loss.item())
         losses = torch.FloatTensor(losses)
         avg_loss = torch.mean(losses)
-        counter = counter + 1
-        if counter % 10 == 0:
-            print('epoch: ', epoch)
-            print('loss: ', avg_loss)
-            model_fp = '/model_checkpoint-' + model_name
-            torch.save({'epoch': counter, 'model_state_dict': model.state_dict(),
-                        'optimizer_state_dict': optimizer.state_dict(), 'loss': loss},
-                       os.getcwd()+model_fp)
-            tokenizer.save_pretrained(save_directory=os.getcwd() + token_save_name)
+        print('loss: ', avg_loss)
 
     print('saving model + tokenizer')
     model.save_pretrained(save_directory=os.getcwd() + model_save_name, save_config=True)
     tokenizer.save_pretrained(save_directory=os.getcwd() + token_save_name)
+
+    # Inference from Validation
+    print('beginning inference')
+    predictions = []
+    ground_truths = []
+    for batch in valid_data_loader:
+        generated_ids = model.generate(batch[0], max_length=1000)
+        pred_json_labels = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
+        for preds in pred_json_labels:
+            predictions.append(preds)
+        # Try to convert actual labels from id's to tokens
+        truth_labels_debug = batch[1]
+        truth_labels_debug[truth_labels_debug == -100] = tokenizer.pad_token_id
+        truth_labels = tokenizer.batch_decode(truth_labels_debug, skip_special_tokens=True)
+        for label in truth_labels:
+            ground_truths.append(label)
+
+    pred_file = open('preds.txt', 'w')
+    for ex in predictions:
+        pred_file.write(ex + '\n')
+    pred_file.close()
+
+    label_file = open('truths.txt', 'w')
+    for ex in ground_truths:
+        label_file.write(ex + '\n')
+    label_file.close()
 
     print('end')
