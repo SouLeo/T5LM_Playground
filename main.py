@@ -63,8 +63,9 @@ if __name__ == '__main__':
     training_labels = helper_functions.check_sequence_len(max_seq_len, data_preprocess.training_labels)
 
     # Ensure Prompts are only Tuned
-    vocab = range(3218)
-    prompt_token_indices = range(prompt_size)
+    vocab_size = 32100 + prompt_size + 2  # additional +2 for the punctuation tokens
+    vocab = range(vocab_size)
+    prompt_token_indices = range(prompt_size + 2)
     prompt_token_indices = [x + 32100 for x in prompt_token_indices]
     mask = list(set(vocab) ^ set(prompt_token_indices))
     # End of Prompt Tuning Enforcement
@@ -140,7 +141,7 @@ if __name__ == '__main__':
         losses = torch.FloatTensor(losses)
         avg_loss = torch.mean(losses)
         counter = counter + 1
-        if counter % 10 == 0:
+        if counter % 100 == 0:
             print('epoch: ', epoch)
             print('loss: ', avg_loss)
             model_fp = '/model_checkpoint-' + model_name
@@ -149,8 +150,35 @@ if __name__ == '__main__':
                        os.getcwd()+model_fp)
             tokenizer.save_pretrained(save_directory=os.getcwd() + token_save_name)
 
+
     print('saving model + tokenizer')
     model.save_pretrained(save_directory=os.getcwd() + model_save_name, save_config=True)
     tokenizer.save_pretrained(save_directory=os.getcwd() + token_save_name)
+
+
+    # Inference from Validation
+    print('beginning inference')
+    predictions = []
+    ground_truths = []
+    for batch in valid_data_loader:
+        generated_ids = model.generate(batch[0], max_length=1000)
+        pred_json_labels = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
+        for preds in pred_json_labels:
+            predictions.append(preds)
+        truth_labels_debug = batch[1]
+        truth_labels_debug[truth_labels_debug == -100] = tokenizer.pad_token_id
+        truth_labels = tokenizer.batch_decode(truth_labels_debug, skip_special_tokens=True)
+        for label in truth_labels:
+            ground_truths.append(label)
+
+    pred_file = open('preds-' + model_name + '.txt', 'w')
+    for ex in predictions:
+        pred_file.write(ex + '\n')
+    pred_file.close()
+
+    label_file = open('truths-' + model_name + '.txt', 'w')
+    for ex in ground_truths:
+        label_file.write(ex + '\n')
+    label_file.close()
 
     print('end')

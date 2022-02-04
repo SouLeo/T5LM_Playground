@@ -45,12 +45,14 @@ if __name__ == '__main__':
     # End of Prompt Tuning Enforcement
 
     # model setup
-    tokenizer = transformers.T5Tokenizer.from_pretrained(os.getcwd()+'/saved_tokenizer')
+    tokenizer = transformers.T5Tokenizer.from_pretrained(os.getcwd()+token_save_name)
     model = transformers.T5ForConditionalGeneration.from_pretrained(model_name).to(device)
     model.resize_token_embeddings(len(tokenizer))
     optimizer = transformers.AdamW(model.parameters(), lr=0.001)
     checkpoint = torch.load(os.getcwd() + '/model_checkpoint-'+model_name)
     model.load_state_dict(checkpoint['model_state_dict'])
+    print(checkpoint['epoch'])
+
     optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
     training_data_loader = torch.load('training_data_loader-' + model_name)
     valid_data_loader = torch.load('valid_data_loader-' + model_name)
@@ -74,12 +76,12 @@ if __name__ == '__main__':
         for label in truth_labels:
             ground_truths.append(label)
 
-    pred_file = open('preds-' + model_name + '.txt', 'w')
+    pred_file = open('preds-1-' + model_name + '.txt', 'w')
     for ex in predictions:
         pred_file.write(ex + '\n')
     pred_file.close()
 
-    label_file = open('truths-' + model_name + '.txt', 'w')
+    label_file = open('truths-1-' + model_name + '.txt', 'w')
     for ex in ground_truths:
         label_file.write(ex + '\n')
     label_file.close()
