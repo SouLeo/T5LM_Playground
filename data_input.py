@@ -5,19 +5,38 @@ import json
 class DataInput:
     def __init__(self):
         self.file_path = os.getcwd() + '/sid-data'
-        self.data = self.extract_umrf_data()
+        self.data = self.extract_umrf_action_data()
+        # self.data = self.extract_umrf_data()
         # self.training_split = 251  # len(self.data)
 
         self.training_jsons = None
         self.training_jsons_str = None
         self.train_nl_prompts = None
-        self.get_training_data()
+        # self.get_training_data_umrf_actions()
+        # self.get_training_data()
+        self.new_get_training_data()
+
 
     def get_nl_prompt(self, json_dicts: list):
         nl_prompts = []
         for json in json_dicts:
             nl_prompts.append(json['graph_description'])
         return nl_prompts
+
+    def get_nl_prompt_actions(self, json_dicts: list):
+        nl_prompts = []
+        for json in json_dicts:
+            nl_prompts.append(json['description'])
+        return nl_prompts
+
+    def extract_umrf_action_data(self):
+        self.file_path = os.getcwd() + '/ta_place.txt'
+        file = open(self.file_path, 'r')
+        lines = file.readlines()
+        data = []
+        for line in lines:
+            data.append(json.loads(line))
+        return data
 
     def extract_umrf_data(self):
         json_list = [pos_json for pos_json in os.listdir(self.file_path) if pos_json.endswith('.json')]
@@ -43,10 +62,43 @@ class DataInput:
                 json_dicts.append(json_dict)
         return json_dicts
 
+
+    # def get_training_data_umrf_actions(self):
+    #     # self.training_jsons = self.data[:self.training_split]
+    #     self.training_jsons = self.data
+    #     self.train_nl_prompts = self.get_nl_prompt(self.training_jsons)
+    #     labels = []
+    #     for ex in self.training_jsons:
+    #         # items_list = []
+    #         for items in ex['umrf_actions']:
+    #             if items['package_name'] == 'ta_place':
+    #                 del items['id']
+    #                 del items['effect']
+    #                 del items['package_name']
+    #                 try:
+    #                     del items['children']
+    #                 except:
+    #                     print('no children')
+    #                 try:
+    #                     del items['parents']
+    #                 except:
+    #                     print('no children')
+    #                 # items_list.append(items)
+    #                 labels.append(items)
+    #     self.training_jsons_str = self.get_json_as_string(labels)
+    #
+    #     out_file = open('ta_place' + '.txt', 'w')
+    #     for ex in self.training_jsons_str:
+    #         out_file.write(ex + '\n')
+    #     out_file.close()
+
+
     def get_training_data(self):
         # self.training_jsons = self.data[:self.training_split]
         self.training_jsons = self.data
+        # self.train_nl_prompts = self.get_nl_prompt_actions(self.training_jsons)
         self.train_nl_prompts = self.get_nl_prompt(self.training_jsons)
+
         labels = []
         for ex in self.training_jsons:
             items_list = []
@@ -58,6 +110,31 @@ class DataInput:
             labels.append(items_list)
         self.training_jsons_str = self.get_json_as_string(labels)
 
+
+    def new_get_training_data(self):
+        # self.training_jsons = self.data[:self.training_split]
+        self.training_jsons = self.data
+        self.train_nl_prompts = self.get_nl_prompt_actions(self.training_jsons)
+
+        #
+        # labels = []
+        # for ex in self.training_jsons:
+        #     items_list = []
+        #     for items in ex['umrf_actions']:
+        #         del items['id']
+        #         del items['effect']
+        #         del items['package_name']
+        #         items_list.append(items)
+        #     labels.append(items_list)
+        # self.training_jsons_str = self.get_json_as_string(labels)
+        self.file_path = os.getcwd() + '/ta_place.txt'
+        file = open(self.file_path, 'r')
+        lines = file.readlines()
+        data = []
+        for line in lines:
+            data.append(json.loads(line))
+        self.training_jsons_str = data
+
     def get_json_as_string(self, json_list: list):
         json_strings = []
         for item in json_list:
@@ -68,5 +145,4 @@ class DataInput:
 if __name__ == '__main__':
     datainput = DataInput()
     print('you are running data input with file path: ' + datainput.file_path)
-    training_prompts, training_jsons = datainput.get_training_data()
     print('data collection finished')

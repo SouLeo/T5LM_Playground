@@ -1,0 +1,163 @@
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn to the left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn to the left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn to the left again", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "take a left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "take a"}}}
+{"name": "TaManouevre", "description": "Turn to the left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn to the left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn back around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn back"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "hang a left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "hang a"}}}
+{"name": "TaManouevre", "description": "Go forward", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "forward"}, "verb": {"pvf_type": "string", "pvf_example": "Go"}}}
+{"name": "TaManouevre", "description": "turn to the left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn to"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn to the right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn to"}}}
+{"name": "TaManouevre", "description": "turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Go forward", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "forward"}, "verb": {"pvf_type": "string", "pvf_example": "Go"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Go straight", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "straight"}, "verb": {"pvf_type": "string", "pvf_example": "Go"}}}
+{"name": "TaManouevre", "description": "turn right near bed", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn to your left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn to"}}}
+{"name": "TaManouevre", "description": "turn to the right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn to"}}}
+{"name": "TaManouevre", "description": "hang left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "hang"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "move forward a few feet", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "forward"}, "distance": {"amount": {"pvf_type": "number", "pvf_example": "few"}, "unit": {"pvf_type": "string", "pvf_example": "feet"}}, "verb": {"pvf_type": "string", "pvf_example": "move"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "walk forward slightly", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "forward"}, "extent": {"pvf_type": "string", "pvf_example": "slightly"}, "verb": {"pvf_type": "string", "pvf_example": "walk"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "move to the left a bit", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "extent": {"pvf_type": "string", "pvf_example": "a bit"}, "verb": {"pvf_type": "string", "pvf_example": "move"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "walk forward", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "forward"}, "verb": {"pvf_type": "string", "pvf_example": "walk"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "walk a few steps", "input_parameters": {"extent": {"pvf_type": "string", "pvf_example": "a few steps"}, "verb": {"pvf_type": "string", "pvf_example": "walk"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "go right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "go"}}}
+{"name": "TaManouevre", "description": "turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn to the right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn to"}}}
+{"name": "TaManouevre", "description": "make a right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "make a"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "hang a right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "hang a"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "bear straight and right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "straight and right"}, "verb": {"pvf_type": "string", "pvf_example": "bear"}}}
+{"name": "TaManouevre", "description": "turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "walk forwards a bit", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "forwards"}, "extent": {"pvf_type": "string", "pvf_example": "a bit"}, "verb": {"pvf_type": "string", "pvf_example": "walk"}}}
+{"name": "TaManouevre", "description": "Turn to the left. ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn to"}}}
+{"name": "TaManouevre", "description": "Take a couple steps to the left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "extent": {"pvf_type": "string", "pvf_example": "couple steps"}, "verb": {"pvf_type": "string", "pvf_example": "take a"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "move a bit to the left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "extent": {"pvf_type": "string", "pvf_example": "a bit"}, "verb": {"pvf_type": "string", "pvf_example": "move"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Back up", "input_parameters": {"verb": {"pvf_type": "string", "pvf_example": "Back up"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "take a step", "input_parameters": {"extent": {"pvf_type": "string", "pvf_example": "a step"}, "verb": {"pvf_type": "string", "pvf_example": "take"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn", "input_parameters": {"verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Take a step backwards", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "backwards"}, "extent": {"pvf_type": "string", "pvf_example": "a step"}, "verb": {"pvf_type": "string", "pvf_example": "Take"}}}
+{"name": "TaManouevre", "description": "then a step to your left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "extent": {"pvf_type": "string", "pvf_example": "a step"}}}
+{"name": "TaManouevre", "description": "Move to your right a bit until you are standing in front of the bathroom counter. ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "extent": {"pvf_type": "string", "pvf_example": "until you are standing in front of the bathroom counter"}, "verb": {"pvf_type": "string", "pvf_example": "Move to"}}}
+{"name": "TaManouevre", "description": "Turn to your left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "walk across the room", "input_parameters": {"extent": {"pvf_type": "string", "pvf_example": "the room"}, "verb": {"pvf_type": "string", "pvf_example": "walk across"}}}
+{"name": "TaManouevre", "description": "turn to your left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "walk straight", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "straight"}, "verb": {"pvf_type": "string", "pvf_example": "walk"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "Walk to your left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "your left"}, "verb": {"pvf_type": "string", "pvf_example": "Walk to"}}}
+{"name": "TaManouevre", "description": "Go forward", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "Go forward"}, "verb": {"pvf_type": "string", "pvf_example": "Go"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "go left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "go"}}}
+{"name": "TaManouevre", "description": "Turn left", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn to the right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn to"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "take a step towards the bed", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "towards the bed"}, "extent": {"pvf_type": "string", "pvf_example": "a step"}, "verb": {"pvf_type": "string", "pvf_example": "take"}}}
+{"name": "TaManouevre", "description": "Turn right", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "Turn around", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "around"}, "verb": {"pvf_type": "string", "pvf_example": "Turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn right ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "right"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
+{"name": "TaManouevre", "description": "turn left ", "input_parameters": {"direction": {"pvf_type": "string", "pvf_example": "left"}, "verb": {"pvf_type": "string", "pvf_example": "turn"}}}
